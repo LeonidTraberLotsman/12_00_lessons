@@ -6,10 +6,22 @@ public class bodyMove : MonoBehaviour
 {
     Rigidbody body;
     public int speed_modificator = 1;
+
+    public int hp = 30;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
+    }
+
+    public void GetDamage(int dam)
+    {
+        hp = hp - dam;
+        if (hp < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

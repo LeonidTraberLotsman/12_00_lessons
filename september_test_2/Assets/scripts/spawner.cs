@@ -8,12 +8,16 @@ public class spawner : MonoBehaviour
 
     public GameObject prefab;
 
+    public Transform player;
+
     void SpawnOne()
     {
         GameObject new_one = Instantiate(prefab);
         new_one.transform.position = transform.position + new Vector3(Random.RandomRange(-20f, 20f), 0, Random.RandomRange(-20f, 20f));
-        StartCoroutine(Move(new_one));
 
+        new_one.GetComponent<dog>().player = player;
+        //StartCoroutine(Move(new_one));
+        // hello man< I am glat that you can read it
     }
 
     IEnumerator Move(GameObject one)
@@ -37,7 +41,7 @@ public class spawner : MonoBehaviour
         while (true)
         {
             SpawnOne();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
